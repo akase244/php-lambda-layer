@@ -5,11 +5,8 @@ yum update -y && \
     bison \
     gcc \
     gcc-c++ \
-    make \
     libcurl-devel \
     libxml2-devel \
-    tar \
-    gzip \
     zip \
     git
 
@@ -26,7 +23,6 @@ cd php-src-php-7.3.1
       --prefix=/usr/local/ \
       --with-openssl=/usr/local/ssl \
       --with-curl \
-      --with-zlib \
       --enable-pcntl \
       --without-pear && \
     make install
@@ -41,7 +37,6 @@ mkdir /tmp/layer/bin && \
     cp /usr/local/bin/php /tmp/layer/bin
 
 mkdir /tmp/layer/src
-cp /opt/layer/phpversion.php /tmp/layer/src
 cp /opt/layer/function.php /tmp/layer/src
 
 zip -r /opt/layer/runtime.zip bin bootstrap
