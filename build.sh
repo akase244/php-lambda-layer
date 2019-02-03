@@ -42,7 +42,7 @@ mkdir /tmp/layer/bin && \
 
 mkdir /tmp/layer/src
 cp /opt/layer/phpversion.php /tmp/layer/src
-cp /opt/layer/phpinfo.php /tmp/layer/src
+cp /opt/layer/function.php /tmp/layer/src
 
 zip -r /opt/layer/runtime.zip bin bootstrap
-zip -r /opt/layer/phpinfo.zip src/phpinfo.php
+zip -r /opt/layer/function.zip src/function.php
