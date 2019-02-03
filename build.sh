@@ -45,5 +45,4 @@ cp /opt/layer/phpversion.php /tmp/layer/src
 cp /opt/layer/phpinfo.php /tmp/layer/src
 
 zip -r /opt/layer/runtime.zip bin bootstrap
-zip -r /opt/layer/phpversion.zip src/phpversion.php
 zip -r /opt/layer/phpinfo.zip src/phpinfo.php
