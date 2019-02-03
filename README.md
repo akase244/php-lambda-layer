@@ -9,8 +9,7 @@
     ```
     $ cd php-lambda-layer
     ```
-3 Build and make PHP Layer.
+3. Build and make PHP Layer.
     ```
     $ docker run --rm -v $(pwd):/opt/layer amazonlinux:2017.03.1.20170812 /opt/layer/build.sh
     ```
-
