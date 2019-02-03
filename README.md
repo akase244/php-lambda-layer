@@ -3,7 +3,7 @@
 ## usage
 1. Clone this repository.
     ```
-    $ git clone git@github.com:stackery/php-lambda-layer.git
+    $ git clone git@github.com:akase244/php-lambda-layer.git
     ```
 1. Change directory.
     ```
