@@ -11,7 +11,7 @@
     ```
 1. Build and make PHP Layer.
     ```
-    $ docker run --rm -v $(pwd):/opt/layer amazonlinux:2017.03.1.20170812 /opt/layer/build.sh
+    $ docker run --rm -v $(pwd):/opt/layer amazonlinux:2018.03.0.20191014.0 /opt/layer/build.sh
     ```
 1. ZIP files created in current directory.
     ```
