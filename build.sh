@@ -8,36 +8,40 @@ yum update -y && \
     libcurl-devel \
     libxml2-devel \
     zip \
-    git
-
-cd /tmp
-curl -sL http://www.openssl.org/source/openssl-1.0.1k.tar.gz | tar -xvz
-cd /tmp/openssl-1.0.1k
-./config && make && make install
-
-cd /tmp
-curl -sL https://github.com/php/php-src/archive/php-7.3.1.tar.gz | tar -xvz
-cd php-src-php-7.3.1
-./buildconf --force && \
-    ./configure \
-      --prefix=/usr/local/ \
-      --with-openssl=/usr/local/ssl \
-      --with-curl \
-      --enable-pcntl \
-      --without-pear && \
-    make install
+    git \
+    libedit-devel \
+    php73 \
+    php73-json
 
 mkdir /tmp/layer
 cd /tmp/layer
 
-cp /opt/layer/bootstrap /tmp/layer
+cp /opt/layer/bootstrap .
 chmod +x bootstrap
 
-mkdir /tmp/layer/bin && \
-    cp /usr/local/bin/php /tmp/layer/bin
+mkdir bin && \
+    cp /usr/bin/php bin/
 
-mkdir /tmp/layer/src
-cp /opt/layer/function.php /tmp/layer/src
+curl -sS https://getcomposer.org/installer | ./bin/php
+./bin/php composer.phar require guzzlehttp/guzzle
 
-zip -r /opt/layer/runtime.zip bin bootstrap
-zip -r /opt/layer/function.zip src/function.php
+mkdir lib
+for lib in libncurses.so.5 libtinfo.so.5 libpcre.so.0; do
+  cp "/lib64/${lib}" lib/
+done
+cp /usr/lib64/libedit.so.0 lib/
+cp -a /usr/lib64/php lib/
+
+cat << EOF > php.ini
+extension_dir=/opt/lib/php/7.3/modules
+
+extension=curl.so
+extension=json.so
+EOF
+
+mkdir src
+cp /opt/layer/postNippoCount.php src/
+
+zip -r /opt/layer/runtime.zip bin lib bootstrap php.ini
+zip -r /opt/layer/postNippoCount.zip src/postNippoCount.php
+zip -r /opt/layer/vendor.zip vendor
