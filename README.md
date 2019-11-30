@@ -16,7 +16,8 @@
 1. ZIP files created in current directory.
     ```
     $ ls |grep zip
-    function.zip
+    postNippoCount.zip
     runtime.zip
+    vendor.zip
     ```
 
